@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./assets/styles/index.scss";
 import "./assets/styles/public.scss";
+import App from './App';
 
-ReactDOM.render(<h1>hellow world!</h1>, document.getElementById('app'));
+ReactDOM.render(< App />, document.getElementById('app'));
 

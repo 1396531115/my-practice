@@ -3,3 +3,9 @@
 h1 {
   color: $--font--color
 }
+.App {
+  background-color: red;
+  &-header {
+    color: yellow
+  }
+}

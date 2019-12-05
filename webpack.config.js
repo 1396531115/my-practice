@@ -9,22 +9,31 @@ const devMod = process.env.NODE_ENV !== 'production';
 
 
 module.exports = {
+  // 设置为开发模式
   mode: "development",
   entry: "./src/index.tsx", 
+  // 设置输出路径
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].[hash].js"
   },
+  // dev-server设置
   devServer: {
     contentBase: './dist',
     compress: true,
     open: true,
     port: 9527
   },
+  // webpack查找的基础路径
+  resolve: {
+    extensions: ['.js', '.json', '.tsx', '.ts', '.jsx'],
+    mainFiles: ["index"]
+  },
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
-        test: /\.tsx$/,
+        test: /\.(js|jsx)$/,
         include: path.resolve(__dirname, "src"),
         use: {
           loader: "babel-loader",
