@@ -7,7 +7,10 @@ interface Props extends React.Props<any> {
 // 定义组件
 class Com1 extends React.Component<Props, any> {
   constructor(props: any) {
-    super(props)
+    super(props);
+    this.state = {
+      test: '12121'
+    }
   }
   // getDefaultProps() {
   //   return {
@@ -15,7 +18,7 @@ class Com1 extends React.Component<Props, any> {
   //   }
   // }
   public render() {
-    return <h1>this is a test111, { this.props.datas }</h1>
+    return <h1>this is a test111, { this.state.test }</h1>
   }
 }
 const App: React.FC = () => {
