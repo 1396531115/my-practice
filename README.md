@@ -69,7 +69,7 @@ my-app                  // 项目名称文件夹
 
 - ### 安装配置 `Webpack`
 
-  构建项目最关键的步骤就是配置 `Webpack` 了，一个优化好的编译方式能让我们更高效地在项目中开发相关的业务逻辑代码和组件，或者更为快捷地进行项目的部署与发布。而 `Webpack` 的构建与部署基本很大程度上依赖于我们对 `Webpack` 插件的选取（你也可以自己开发一些插件用于项目中，不要问为什么，大公司基本上都是用的自己开发的插件）。
+  构建项目最关键的步骤就是配置 `Webpack` 了，一个优化好的编译方式能让我们更高效地在项目中开发相关的业务逻辑代码和组件，或者更为快捷地进行项目的部署与发布。而 `Webpack` 的构建与部署基本很大程度上依赖于我们对 `Webpack` 插件的选取（你也可以自己开发一些插件用于项目中，不要问为什么，大公司基本上都是这么搞的）。
 
   首先需要全局安装 `webpack`，`webpack-cli` ，这样我们就方便运行 <span style="color: #fff;background-color:black;border-radius: 5px;padding: 2px 4px">webpack</span> 命令去编译打包了。
 
@@ -91,7 +91,6 @@ my-app                  // 项目名称文件夹
     // webpack.config.js
     const path = require('path');
     
-    process.env.NODE_ENV = 'development';
     module.exports = {
       entry: './src/index.tsx',
       output: {
@@ -103,7 +102,11 @@ my-app                  // 项目名称文件夹
 
     关于如何设置输出输出路径，请移步这里-->[webpack指南](https://www.webpackjs.com/concepts/)；
 
-    在 <span style="color: #fff;background-color:pink;border-radius: 5px;padding: 2px 4px">filename</span> 前加的 `js/` 是为了将编译后的所有 `js` 单独存放在`js` 这个文件夹中(默认会自动创建文件夹)。`webpack` 分为开发模式 `DEV` 与发布模式  `PUB` ，我们甚至将文件名称根据这些模式来重新命名。
+    在 <span style="color: #fff;background-color:pink;border-radius: 5px;padding: 2px 4px">filename</span> 前加的 `js/` 是为了将编译后的所有 `js` 单独存放在`js` 这个文件夹中(默认会自动创建文件夹)。`webpack` 分为开发模式 `DEV` 与发布模式  `PUB` ，我们甚至可以根据这些模式来生成不同名称的js文件，便于开发。
+
+    ```js
+    filename: process.env.NODE_ENV === 'development' ? [name].js : 'js/[name].[chunkhash].js'
+    ```
 
     运行 <span style="color: #fff;background-color:black;border-radius: 5px;padding: 2px 4px">webpack</span> 命令，我们就能看到生成了一个 `dist` 目录，里面有一个 `js`文件夹
 
