@@ -38,7 +38,6 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/react"],
             cacheDirectory: true,
           }
         }
