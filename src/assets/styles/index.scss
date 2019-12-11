@@ -5,6 +5,9 @@ h1 {
 }
 .App {
   background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   &-header {
     color: yellow
   }

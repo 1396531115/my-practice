@@ -235,9 +235,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
   !*** ./src/assets/styles/index.scss ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("// extracted by mini-css-extract-plugin\n    if(false) { var cssReload; }\n  \n\n//# sourceURL=webpack:///./src/assets/styles/index.scss?");
+eval("throw new Error(\"Module build failed (from ./node_modules/happypack/loader.js):\\nTypeError: Cannot read property 'createChildCompiler' of undefined\\n    at Object.pitch (E:\\\\practice\\\\my-project\\\\node_modules\\\\mini-css-extract-plugin\\\\dist\\\\loader.js:89:43)\\n    at applySyncOrAsync (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:350:21)\\n    at applyPitchLoader (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:205:7)\\n    at applyPitchLoaders (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:226:4)\\n    at applyLoaders (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:120:3)\\n    at HappyWorker.compile (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\HappyWorker.js:27:3)\\n    at COMPILE (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\HappyWorkerChannel.js:46:10)\\n    at process.accept (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\HappyWorkerChannel.js:75:7)\\n    at process.emit (events.js:200:13)\\n    at emit (internal/child_process.js:876:12)\");\n\n//# sourceURL=webpack:///./src/assets/styles/index.scss?");
 
 /***/ }),
 
@@ -246,9 +246,9 @@ eval("// extracted by mini-css-extract-plugin\n    if(false) { var cssReload; }\
   !*** ./src/assets/styles/public.scss ***!
   \***************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("// extracted by mini-css-extract-plugin\n    if(false) { var cssReload; }\n  \n\n//# sourceURL=webpack:///./src/assets/styles/public.scss?");
+eval("throw new Error(\"Module build failed (from ./node_modules/happypack/loader.js):\\nTypeError: Cannot read property 'createChildCompiler' of undefined\\n    at Object.pitch (E:\\\\practice\\\\my-project\\\\node_modules\\\\mini-css-extract-plugin\\\\dist\\\\loader.js:89:43)\\n    at applySyncOrAsync (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:350:21)\\n    at applyPitchLoader (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:205:7)\\n    at applyPitchLoaders (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:226:4)\\n    at applyLoaders (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\applyLoaders.js:120:3)\\n    at HappyWorker.compile (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\HappyWorker.js:27:3)\\n    at COMPILE (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\HappyWorkerChannel.js:46:10)\\n    at process.accept (E:\\\\practice\\\\my-project\\\\node_modules\\\\happypack\\\\lib\\\\HappyWorkerChannel.js:75:7)\\n    at process.emit (events.js:200:13)\\n    at emit (internal/child_process.js:876:12)\");\n\n//# sourceURL=webpack:///./src/assets/styles/public.scss?");
 
 /***/ }),
 
