@@ -39,6 +39,9 @@ module.exports = smp.wrap({
   // webpack查找的基础路径
   resolve: {
     extensions: ['.js', '.json', '.tsx', '.ts', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
     mainFiles: ["index"]
   },
   module: {
@@ -68,7 +71,6 @@ module.exports = smp.wrap({
       },
       {
         test: /\.(png|jpg|gif)$/,
-        include: includePath,
         use: 'happypack/loader?id=imgs',
       }
     ],
