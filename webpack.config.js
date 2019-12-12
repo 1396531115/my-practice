@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); // 打包HTML文件
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin"); // 单独打包CSS文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 单独打包CSS文件
 const OptimizeCssPlugin = require("optimize-css-assets-webpack-plugin"); // 压缩CSS文件
 const UglifyjsPlufin = require("uglifyjs-webpack-plugin"); // 压缩JS文件
@@ -51,20 +52,20 @@ module.exports = smp.wrap({
       {
         test: /\.(c|sc)ss$/,
         include: includePath,
-        use: 'happypack/loader?id=css',	
-        // use: [
-        //   {
-        //     loader: MiniCssExtractPlugin.loader,
-        //     options: {
-        //       hmr: devMod,
-        //       publicPath: '../',
-        //       reloadAll: true
-        //     }
-        //   },
-        //   "css-loader",
-        //   "postcss-loader",
-        //   "sass-loader"
-        // ]
+        // use: 'happypack/loader?id=css',	
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: devMod,
+              publicPath: '../',
+              reloadAll: true
+            }
+          },
+          "css-loader",
+          "postcss-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -95,23 +96,24 @@ module.exports = smp.wrap({
         },	
       ],	
     }),
-    new HappyPack({	
-      id: 'css',	
-      threadPool: happyThreadPool,	
-      loaders: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: devMod,
-            publicPath: '../',
-            reloadAll: true
-          }
-        },
-        "css-loader",
-        "postcss-loader",
-        "sass-loader"	
-      ],	
-    }),
+    // new HappyPack({	
+    //   id: 'css',	
+    //   threadPool: happyThreadPool,	
+    //   loaders: [
+    //     // {
+    //     //   loader: MiniCssExtractPlugin.loader,
+    //     //   options: {
+    //     //     hmr: devMod,
+    //     //     publicPath: '../',
+    //     //     reloadAll: true
+    //     //   }
+    //     // },
+    //     "style-loader",
+    //     "css-loader",
+    //     "postcss-loader",
+    //     "sass-loader"	
+    //   ],	
+    // }),
     new HappyPack({	
       id: 'imgs',	
       threadPool: happyThreadPool,	
@@ -130,9 +132,11 @@ module.exports = smp.wrap({
       filename: "index.html",
     }),
     new CleanWebpackPlugin(),
+    // new ExtractTextWebpackPlugin({
+    //   filename: devMod ? 'css/[name].css' : 'css/[name].[hash].css',
+    // }),
     new MiniCssExtractPlugin({
       filename: devMod ? 'css/[name].css' : 'css/[name].[hash].css',
-      chunkFilename: devMod ? '[id].css' : '[id].[hash].css',
     })
   ],
   optimization: {
