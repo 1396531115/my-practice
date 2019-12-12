@@ -52,7 +52,6 @@ module.exports = smp.wrap({
       {
         test: /\.(c|sc)ss$/,
         include: includePath,
-        // use: 'happypack/loader?id=css',	
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -71,15 +70,6 @@ module.exports = smp.wrap({
         test: /\.(png|jpg|gif)$/,
         include: includePath,
         use: 'happypack/loader?id=imgs',
-        // use: [
-        //   {
-        //     loader: "url-loader",
-        //     options: {
-        //       limit: 10000,
-        //       name: 'images/[name].[ext]',
-        //     }
-        //   }
-        // ]
       }
     ],
   },
@@ -96,24 +86,6 @@ module.exports = smp.wrap({
         },	
       ],	
     }),
-    // new HappyPack({	
-    //   id: 'css',	
-    //   threadPool: happyThreadPool,	
-    //   loaders: [
-    //     // {
-    //     //   loader: MiniCssExtractPlugin.loader,
-    //     //   options: {
-    //     //     hmr: devMod,
-    //     //     publicPath: '../',
-    //     //     reloadAll: true
-    //     //   }
-    //     // },
-    //     "style-loader",
-    //     "css-loader",
-    //     "postcss-loader",
-    //     "sass-loader"	
-    //   ],	
-    // }),
     new HappyPack({	
       id: 'imgs',	
       threadPool: happyThreadPool,	
@@ -132,9 +104,6 @@ module.exports = smp.wrap({
       filename: "index.html",
     }),
     new CleanWebpackPlugin(),
-    // new ExtractTextWebpackPlugin({
-    //   filename: devMod ? 'css/[name].css' : 'css/[name].[hash].css',
-    // }),
     new MiniCssExtractPlugin({
       filename: devMod ? 'css/[name].css' : 'css/[name].[hash].css',
     })
