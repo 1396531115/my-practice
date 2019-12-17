@@ -21,8 +21,10 @@
         "plugin:react/recommended",
         "plugin:@typescript-eslint/eslint-recommended"
     ],
+    // 可以使用全局变量
     "globals": {
         "react": true,
+        "Babel": true,
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },

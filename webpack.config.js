@@ -6,6 +6,7 @@ const UglifyjsPlufin = require('uglifyjs-webpack-plugin'); // 压缩JS文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清除上次打包的文件
 const SpeedMasureWebpackPlugin = require('speed-measure-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
+const { addWebpackAlias, override } = require('customize-cra');
 
 const smp = new SpeedMasureWebpackPlugin({
   outputFormat: 'human',
@@ -40,7 +41,7 @@ module.exports = smp.wrap({
   resolve: {
     extensions: ['.js', '.json', '.tsx', '.ts', '.jsx'],
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   module: {

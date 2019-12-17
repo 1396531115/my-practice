@@ -7,6 +7,9 @@
       "esnext"
     ],
     "baseUrl": ".",           // 工作根目录
+    "paths": {                 // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
+      "@/*": ["src/*"],         //指定后可以在文件之直接 import * from 'src';
+    },
     "allowJs": true,          // 允许编译javascript文件。
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,7 +27,4 @@
   "include": [               // 指定一个匹配列表（属于自动指定该路径下的所有ts相关文件）
     "src/**/*"
   ],
-  "paths": {                 // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
-    "@/*": ["src/*"],         //指定后可以在文件之直接 import * from 'src';
-  }
 }
