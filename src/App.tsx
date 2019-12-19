@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Home from '@/base/home/index.tsx';
 import { Button } from 'antd';
-console.log('--------------', Button);
 // import { Layout, Menu, Icon } from 'antd';
 // import { Sider } from 'antd/lib/layout/Sider';
 // const { Header, Sider, Content } = Layout;

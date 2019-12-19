@@ -5,7 +5,6 @@ const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin'); // 压�
 const UglifyjsPlufin = require('uglifyjs-webpack-plugin'); // 压缩JS文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清除上次打包的文件
 const SpeedMasureWebpackPlugin = require('speed-measure-webpack-plugin');
-const { CheckerPlugin } = require('awesome-typescript-loader');
 
 const smp = new SpeedMasureWebpackPlugin({
   outputFormat: 'human',
@@ -46,22 +45,9 @@ module.exports = smp.wrap({
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        include: includePath,
-        loader: 'awesome-typescript-loader',
-      },
-      {
-        test: /\.(js|jsx)$/,
-        include: [path.resolve(__dirname, 'node_modules'), includePath],
+        test: /\.(js|tsx|jsx|ts)$/,
+        exclude: /node_modules/,
         use: 'happypack/loader?id=js',
-        // use: [
-        //   {
-        //     loader: 'babel-loader',
-        //     options: {
-        //       plugins: [['import', { libraryName: 'antd', libraryDirectory: 'lib', style: true }]],
-        //     },
-        //   },
-        // ],
       },
       {
         test: /\.(le|c)ss$/,
@@ -112,7 +98,6 @@ module.exports = smp.wrap({
       filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
-    new CheckerPlugin(),
     new MiniCssExtractPlugin({
       filename: devMod ? 'css/[name].css' : 'css/[name].[hash].css',
       chunkFilename: '[id].css',
