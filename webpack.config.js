@@ -6,7 +6,6 @@ const UglifyjsPlufin = require('uglifyjs-webpack-plugin'); // 压缩JS文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清除上次打包的文件
 const SpeedMasureWebpackPlugin = require('speed-measure-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
-const { addWebpackAlias, override } = require('customize-cra');
 
 const smp = new SpeedMasureWebpackPlugin({
   outputFormat: 'human',
@@ -46,14 +45,27 @@ module.exports = smp.wrap({
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, include: includePath, loader: 'awesome-typescript-loader' },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.tsx?$/,
         include: includePath,
-        use: 'happypack/loader?id=js',
+        loader: 'awesome-typescript-loader',
       },
       {
-        test: /\.(sc|c)ss$/,
+        test: /\.(js|jsx)$/,
+        include: [path.resolve(__dirname, 'node_modules'), includePath],
+        use: 'happypack/loader?id=js',
+        // use: [
+        //   {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       plugins: [['import', { libraryName: 'antd', libraryDirectory: 'lib', style: true }]],
+        //     },
+        //   },
+        // ],
+      },
+      {
+        test: /\.(le|c)ss$/,
+        include: [path.resolve(__dirname, 'node_modules'), includePath],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -65,7 +77,7 @@ module.exports = smp.wrap({
           },
           'css-loader',
           'postcss-loader',
-          'sass-loader',
+          'less-loader',
         ],
       },
       {
@@ -88,7 +100,7 @@ module.exports = smp.wrap({
       threadPool: happyThreadPool,
       loaders: [
         {
-          loader: 'babel-loader',
+          loader: require.resolve('babel-loader'),
           options: {
             cacheDirectory: true,
           },
