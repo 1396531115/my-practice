@@ -1,38 +1,62 @@
 import React from 'react';
+import { Layout, Icon } from 'antd';
 import { Route } from 'react-router-dom';
-import Home from '@/base/home/index.tsx';
-import { Button } from 'antd';
-// import { Layout, Menu, Icon } from 'antd';
-// import { Sider } from 'antd/lib/layout/Sider';
-// const { Header, Sider, Content } = Layout;
 
-// 定义prop对象的类型
-interface Props extends React.Props<any> {
+const { Header, Sider, Content } = Layout;
+
+import SiderMenu from '@/components/common/sider-menu';
+import Home from '@/base/home';
+
+interface IProps extends React.Props<any> {
   datas?: any;
 }
-// 定义组件
 
-// class SiderDemo extends React.Component {
-//   state = {
-//     collapsed: false,
-//   };
+// 定义prop对象的类型
 
-//   toggle = () => {
-//     this.setState({
-//       collapsed: !this.state.collapsed,
-//     });
-//   };
-export default class App extends React.Component<Props, any> {
+export default class App extends React.Component<IProps, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       collapsed: false,
     };
+    this.toggle = () => {
+      this.setState({
+        collapsed: !this.state.collapsed,
+      });
+    };
+    this.changeSelected = (data: any) => {
+      this.setState({
+        selectedKey: data.key,
+      });
+    };
   }
   public render() {
     return (
       <div className="App">
-        <Button>this is a test</Button>
+        <Layout>
+          <Sider collapsible collapsed={this.state.collapsed}>
+            <SiderMenu></SiderMenu>
+          </Sider>
+          <Layout>
+            <Header style={{ background: '#fff', padding: 0 }}>
+              <Icon
+                className="trigger"
+                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                onClick={this.toggle}
+              />
+            </Header>
+            <Content
+              style={{
+                margin: '24px 16px',
+                padding: 24,
+                background: '#fff',
+                minHeight: 280,
+              }}
+            >
+              <Route path="/home" component={Home}></Route>
+            </Content>
+          </Layout>
+        </Layout>
       </div>
     );
   }

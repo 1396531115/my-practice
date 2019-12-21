@@ -6,10 +6,11 @@ interface Props extends React.Props<any> {
 export default class Home extends React.Component<Props, any> {
   constructor(Props: any) {
     super(Props);
+    this.state = {};
+    this.showDetail = () => {
+      console.log('++++++++++++++++++++++');
+    };
   }
-  showDetail = () => {
-    console.log('++++++++++++++++++++++');
-  };
   public render() {
     return <div onClick={this.showDetail}>this is home</div>;
   }
