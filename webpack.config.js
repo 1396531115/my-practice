@@ -23,6 +23,7 @@ module.exports = smp.wrap({
   // 设置为开发模式
   mode: 'development',
   entry: './src/index.tsx',
+  stats: 'errors-warnings',
   // 设置输出路径
   output: {
     path: path.resolve(__dirname, 'dist'),
