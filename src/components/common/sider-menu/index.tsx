@@ -1,9 +1,6 @@
 import React from 'react';
-import { History } from 'react-router';
-import { Menu, Icon, Layout } from 'antd';
-
-const { Header, Sider, Content } = Layout;
-
+import { Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 const { SubMenu } = Menu;
 
 interface IProps extends React.Props<any> {
@@ -16,7 +13,7 @@ export default class SiderMenu extends React.Component<IProps, any> {
     require('./style.less');
     this.state = {
       menuData: [
-        { name: '首页', id: '01', icon: 'home' },
+        { name: '首页', id: '01', icon: 'home', route: 'home' },
         { name: '首页1', id: '02', icon: 'area-chart' },
         { name: '首页2', id: '03', icon: 'contacts' },
         { name: '首页3', id: '04', icon: 'idcard' },
@@ -32,7 +29,10 @@ export default class SiderMenu extends React.Component<IProps, any> {
       if (!item.children) {
         return (
           <Menu.Item key={item.id}>
-            <Icon type={item.icon}></Icon> <span>{item.name}</span>
+            <Link to={'/' + item.route}>
+              <Icon type={item.icon}></Icon>
+              <span>{item.name}</span>
+            </Link>
           </Menu.Item>
         );
       } else {
