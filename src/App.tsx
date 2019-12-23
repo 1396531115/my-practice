@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Breadcrumb } from 'antd';
 import { Route } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
@@ -18,6 +18,7 @@ export default class App extends React.Component<IProps, any> {
     super(props);
     this.state = {
       collapsed: false,
+      curRouter: ['主页'],
     };
     this.toggle = () => {
       this.setState({
@@ -29,13 +30,18 @@ export default class App extends React.Component<IProps, any> {
         selectedKey: data.key,
       });
     };
+    this.changeCrumb = (data: any) => {
+      this.setState({
+        curRouter: data,
+      });
+    };
   }
   public render() {
     return (
       <div className="App">
         <Layout>
           <Sider collapsible collapsed={this.state.collapsed}>
-            <SiderMenu></SiderMenu>
+            <SiderMenu changeBreadcrumb={this.changeCrumb}></SiderMenu>
           </Sider>
           <Layout>
             <Header style={{ background: '#fff', padding: 0 }}>
@@ -44,6 +50,11 @@ export default class App extends React.Component<IProps, any> {
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}
               />
+              <div className="breadcrumb-box">
+                {this.state.curRouter.map((item: any) => {
+                  return <Breadcrumb.Item key={item}>{item}</Breadcrumb.Item>;
+                })}
+              </div>
             </Header>
             <Content
               style={{
