@@ -7,7 +7,7 @@ import Email from '../dbs/config';
 import axios from './utils/axios';
 
 let router = new Router({
-  prefix: '/users',
+  prefix: '',
 });
 let Store = new Redis().client;
 router.post('/signup', async ctx => {

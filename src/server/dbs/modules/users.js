@@ -10,10 +10,6 @@ const UserSchema = new Schema({
     type: String,
     require: true,
   },
-  email: {
-    type: String,
-    require: true,
-  },
 });
 
 export default mongoose.model('User', UserSchema);

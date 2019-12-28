@@ -29,7 +29,8 @@ class SiderMenu extends React.Component<IProps, any> {
           return item;
         }
       });
-      this.props.history.push('/' + item.route[item.route.length - 1]);
+      console.log('------------', item);
+      this.props.history.push('/' + item.icon);
       this.props.changeBreadcrumb(item.route);
     };
   }
