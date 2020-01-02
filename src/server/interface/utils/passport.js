@@ -3,7 +3,7 @@ import LocalStrategy from 'passport-local';
 import UserModel from '../../dbs/modules/users';
 
 passport.use(
-  new LocalStrategy(async function(username, password, done) {
+  new LocalStrategy(async (username, password, done) => {
     let where = {
       username,
     };
