@@ -51,7 +51,7 @@ router.post('/login', async ctx => {
     email,
   });
   if (newUser) {
-    let res = await axios.post('/users/singin', {
+    let res = await axios.post('/users/signin', {
       username,
       password,
     });
@@ -100,7 +100,7 @@ router.post('/signin', async (ctx, next) => {
 });
 router.post('/verify', async (ctx, next) => {
   let username = ctx.request.body.username;
-  const saveExpire = await Store.hget(`nodemail: ${username}`, 'expuire');
+  const saveExpire = await Store.hget(`nodemail: ${username}`, 'expire');
   if (saveExpire && new Date().getTime() - saveExpire < 0) {
     ctx.body = {
       code: -1,
@@ -133,7 +133,7 @@ router.post('/verify', async (ctx, next) => {
     if (err) {
       return console.log('error');
     } else {
-      Store.hmset(`nodemail: ${ko.user}`, 'code', ko.code, 'expoire', ko.expire, 'email', ko.email);
+      Store.hmset(`nodemail: ${ko.user}`, 'code', ko.code, 'expire', ko.expire, 'email', ko.email);
     }
   });
   ctx.body = {
