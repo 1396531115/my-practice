@@ -39,6 +39,7 @@ module.exports = smp.wrap({
   // webpack查找的基础路径
   resolve: {
     extensions: ['.js', '.json', '.tsx', '.ts', '.jsx'],
+    // 设置路径别别名
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
